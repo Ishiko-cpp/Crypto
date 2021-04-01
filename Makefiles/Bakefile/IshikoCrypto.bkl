@@ -1,0 +1,33 @@
+toolsets = gnu vs2017 vs2015 vs2013;
+
+gnu.makefile = ../GNUmakefile/GNUmakefile;
+vs2017.solutionfile = ../VC15/IshikoCrypto.sln;
+vs2015.solutionfile = ../VC14/IshikoCrypto.sln;
+vs2013.solutionfile = ../VC12/IshikoCrypto.sln;
+
+library IshikoCrypto
+{
+    includedirs += ../../Include/Ishiko/Crypto;
+
+    if ($(toolset) == gnu)
+    {
+        cxx-compiler-options = "-std=c++11";
+        outputdir = ../../Lib;
+    }
+
+    if ($(toolset) != gnu)
+    {
+        archs = x86 x86_64;
+        outputdir = ../../Lib/$(arch);
+    }
+
+    if ($(config) == Debug)
+    {
+        basename = IshikoCrypto-d;
+    }
+
+    headers
+    {
+        ../../Include/Ishiko/Crypto/linkoptions.h
+    }
+}

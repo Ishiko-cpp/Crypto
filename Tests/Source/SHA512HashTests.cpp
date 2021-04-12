@@ -70,7 +70,7 @@ void SHA512HashTests::ValueTest1(Test& test)
 
 void SHA512HashTests::ValueTest2(Test& test)
 {
-    Ishiko::Hash::SHA512Hash hash;
+    SHA512Hash hash;
     const char* text = "abc";
     hash.update(text, strlen(text));
     const std::array<unsigned char, 64>& value = hash.value();
@@ -105,7 +105,7 @@ void SHA512HashTests::ValueTest2(Test& test)
 
 void SHA512HashTests::ValueTest3(Test& test)
 {
-    Ishiko::Hash::SHA512Hash hash;
+    SHA512Hash hash;
     const char* text = "abcdefghbcdefghicdefghijdefghijkefghijklfghijklmghijklmnhijklmnoijklmnopjklmnopqklmnopqrlmnopqrsmnopqrstnopqrstu";
     hash.update(text, strlen(text));
     const std::array<unsigned char, 64>& value = hash.value();
@@ -140,7 +140,7 @@ void SHA512HashTests::ValueTest3(Test& test)
 
 void SHA512HashTests::ValueTest4(Test& test)
 {
-    Ishiko::Hash::SHA512Hash hash;
+    SHA512Hash hash;
     std::string text(1000000, 'a');
     hash.update(text.c_str(), text.size());
     const std::array<unsigned char, 64>& value = hash.value();
@@ -175,7 +175,7 @@ void SHA512HashTests::ValueTest4(Test& test)
 
 void SHA512HashTests::ValueTest5(Test& test)
 {
-    Ishiko::Hash::SHA512Hash hash;
+    SHA512Hash hash;
     std::string text("abcdefghbcdefghicdefghijdefghijkefghijklfghijklmghijklmnhijklmno");
     for (size_t i = 0; i < 16777216; ++i)
     {
@@ -213,7 +213,7 @@ void SHA512HashTests::ValueTest5(Test& test)
 
 void SHA512HashTests::UpdateFromFileTest1(Test& test)
 {
-    Ishiko::Hash::SHA512Hash hash;
+    SHA512Hash hash;
     hash.updateFromFile((test.environment().getTestDataDirectory() / "EmptyFile.txt").string());
     const std::array<unsigned char, 64>& value = hash.value();
 
@@ -247,7 +247,7 @@ void SHA512HashTests::UpdateFromFileTest1(Test& test)
 
 void SHA512HashTests::UpdateFromFileTest2(Test& test)
 {
-    Ishiko::Hash::SHA512Hash hash;
+    SHA512Hash hash;
     hash.updateFromFile((test.environment().getTestDataDirectory() / "abc.txt").string());
     const std::array<unsigned char, 64>& value = hash.value();
 
@@ -281,7 +281,7 @@ void SHA512HashTests::UpdateFromFileTest2(Test& test)
 
 void SHA512HashTests::UpdateFromFileTest3(Test& test)
 {
-    Ishiko::Hash::SHA512Hash hash;
+    SHA512Hash hash;
     hash.updateFromFile((test.environment().getTestDataDirectory() / "smallfile.txt").string());
     const std::array<unsigned char, 64>& value = hash.value();
 
@@ -326,7 +326,7 @@ void SHA512HashTests::UpdateFromFileTest4(Test& test)
     }
     testFile.close();
 
-    Ishiko::Hash::SHA512Hash hash;
+    SHA512Hash hash;
     hash.updateFromFile(testFilePath);
     const std::array<unsigned char, 64>& value = hash.value();
 
@@ -374,7 +374,7 @@ void SHA512HashTests::UpdateFromFileTest5(Test& test)
     }
     testFile.close();
 
-    Ishiko::Hash::SHA512Hash hash;
+    SHA512Hash hash;
     hash.updateFromFile(testFilePath);
     const std::array<unsigned char, 64>& value = hash.value();
 

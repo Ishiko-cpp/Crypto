@@ -18,8 +18,14 @@ program IshikoCryptoTests : IshikoTestFrameworkCore
         libs += IshikoTestFrameworkCore IshikoProcess IshikoErrors boost_filesystem boost_system;
     }
 
+    headers
+    {
+        ../../Source/SHA512HashTests.h
+    }
+
     sources
     {
         ../../Source/main.cpp
+        ../../Source/SHA512HashTests.cpp
     }
 }

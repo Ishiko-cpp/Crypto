@@ -1,3 +1,6 @@
+ishikopath = envvar("ISHIKO_CPP");
+import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/ThirdParty/Botan.bkl;
+
 toolsets = gnu vs2017 vs2015 vs2013;
 
 gnu.makefile = ../GNUmakefile/GNUmakefile;
@@ -5,8 +8,10 @@ vs2017.solutionfile = ../VC15/IshikoCrypto.sln;
 vs2015.solutionfile = ../VC14/IshikoCrypto.sln;
 vs2013.solutionfile = ../VC12/IshikoCrypto.sln;
 
-library IshikoCrypto
+library IshikoCrypto : Botan
 {
+    archs = x86 x86_64;
+
     includedirs += ../../Include/Ishiko/Crypto;
 
     if ($(toolset) == gnu)
@@ -17,7 +22,6 @@ library IshikoCrypto
 
     if ($(toolset) != gnu)
     {
-        archs = x86 x86_64;
         outputdir = ../../Lib/$(arch);
     }
 
@@ -28,6 +32,13 @@ library IshikoCrypto
 
     headers
     {
+        ../../Include/Ishiko/Crypto.h
+        ../../Include/Ishiko/Crypto/SHA512Hash.h
         ../../Include/Ishiko/Crypto/linkoptions.h
+    }
+
+    sources
+    {
+        ../../Source/SHA512Hash.cpp
     }
 }

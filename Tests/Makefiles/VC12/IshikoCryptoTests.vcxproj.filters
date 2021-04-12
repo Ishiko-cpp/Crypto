@@ -17,18 +17,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Include\Ishiko\Crypto.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Include\Ishiko\Crypto\SHA512Hash.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Include\Ishiko\Crypto\linkoptions.h">
+    <ClInclude Include="..\..\Source\SHA512HashTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\SHA512Hash.cpp">
+    <ClCompile Include="..\..\Source\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SHA512HashTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

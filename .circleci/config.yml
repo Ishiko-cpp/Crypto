@@ -43,11 +43,8 @@ jobs:
           name: "Install test dependency: Ishiko/C++ Tests/Core"
           command: cd /projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/tests.git && cd tests/core/build/gnumake && make
       - run:
-          name: Test build
-          command: cd /Ishiko-cpp/Crypto/Tests/Makefiles/GNUmakefile && make
-      - run:
-          name: Run the tests
-          command: cd /Ishiko-cpp/Crypto/Tests/Makefiles/GNUmakefile && ./IshikoCryptoTests
+          name: Test
+          command: cd /projects/ishiko/cpp/crypto/tests/Makefiles/GNUmakefile && make && ./IshikoCryptoTests
 workflows:
   version: 2
   continuous_build:

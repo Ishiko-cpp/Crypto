@@ -13,8 +13,8 @@ jobs:
       - checkout:
           path: /projects/ishiko/cpp/crypto
       - run:
-          name: "Build Ishiko-cpp/botan dependency"
-          command: cd /Ishiko-cpp/botan && python3 configure.py --prefix=/Ishiko-cpp/botan --disable-shared-library && make && make install && echo 'export ISHIKO_CPP_THIRD_PARTY_BOTAN="/Ishiko-cpp/botan"' >> $BASH_ENV
+          name: "Build: Ishiko-cpp/botan dependency"
+          command: cd /projects/ishiko/cpp/botan && python3 configure.py --prefix=/projects/ishiko/cpp/botan --disable-shared-library && make && make install && echo 'export ISHIKO_CPP_THIRD_PARTY_BOTAN="/projects/ishiko/cpp/botan"' >> $BASH_ENV
       - run:
           name: Build
           command: cd /Ishiko-cpp/Crypto/Makefiles/GNUmakefile && make

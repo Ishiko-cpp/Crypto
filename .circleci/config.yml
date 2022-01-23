@@ -17,19 +17,19 @@ jobs:
           command: cd /projects/ishiko/cpp/botan && python3 configure.py --prefix=/projects/ishiko/cpp/botan --disable-shared-library && make && make install && echo 'export ISHIKO_CPP_THIRD_PARTY_BOTAN="/projects/ishiko/cpp/botan"' >> $BASH_ENV
       - run:
           name: Build
-          command: cd /Ishiko-cpp/Crypto/Makefiles/GNUmakefile && make
+          command: cd /projects/ishiko/cpp/crypto/Makefiles/GNUmakefile && make
       - run:
           name: "Checkout Ishiko-cpp/Platform test dependency"
-          command: cd /Ishiko-cpp && git clone https://github.com/Ishiko-cpp/Platform.git
+          command: cd /projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/base-platform.git
       - run:
           name: "Checkout Ishiko-cpp/Errors test dependency"
-          command: cd /Ishiko-cpp && git clone https://github.com/Ishiko-cpp/Errors.git
+          command: cd /projects/ishiko/cpp && git clone https://github.com/Ishiko-cpp/Errors.git
       - run:
           name: "Checkout Ishiko-cpp/Text test dependency"
-          command: cd /Ishiko-cpp && git clone https://github.com/Ishiko-cpp/Text.git
+          command: cd /projects/ishiko/cpp && git clone https://github.com/Ishiko-cpp/Text.git
       - run:
           name: "Checkout Ishiko-cpp/Process test dependency"
-          command: cd /Ishiko-cpp && git clone https://github.com/Ishiko-cpp/Process.git
+          command: cd /projects/ishiko/cpp && git clone https://github.com/Ishiko-cpp/Process.git
       - run:
           name: "Checkout Ishiko-cpp/TestFramework test dependency"
           command: cd /Ishiko-cpp && git clone https://github.com/Ishiko-cpp/TestFramework.git

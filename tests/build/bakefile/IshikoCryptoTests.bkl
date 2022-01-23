@@ -1,15 +1,16 @@
 import ../../../Include/Ishiko/Crypto.bkl;
 ishikopath = envvar("ISHIKO_CPP");
-import $(ishikopath)/TestFramework/Include/Ishiko/TestFramework/TestFrameworkCore.bkl;
+import $(ishikopath)/tests/include/Ishiko/Tests/Core.bkl;
 
-toolsets = gnu vs2017 vs2015 vs2013;
+toolsets = gnu vs2019 vs2017 vs2015 vs2013;
 
-gnu.makefile = ../GNUmakefile/GNUmakefile;
-vs2017.solutionfile = ../VC15/IshikoCryptoTests.sln;
-vs2015.solutionfile = ../VC14/IshikoCryptoTests.sln;
-vs2013.solutionfile = ../VC12/IshikoCryptoTests.sln;
+gnu.makefile = ../gnumake/GNUmakefile;
+vs2019.solutionfile = ../vc16/IshikoCryptoTests.sln;
+vs2017.solutionfile = ../vc15/IshikoCryptoTests.sln;
+vs2015.solutionfile = ../vc14/IshikoCryptoTests.sln;
+vs2013.solutionfile = ../vc12/IshikoCryptoTests.sln;
 
-program IshikoCryptoTests : IshikoCrypto, IshikoTestFrameworkCore
+program IshikoCryptoTests : IshikoCrypto, IshikoTestsCore
 {
     archs = x86 x86_64;
 

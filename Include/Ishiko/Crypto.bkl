@@ -4,7 +4,7 @@ import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/Botan.bkl;
 setting ISHIKO_CPP_CRYPTO_ROOT
 {
     help = "Path to the Ishiko Crypto installation";
-    default = '$(ISHIKO_CPP)/Crypto';
+    default = '$(ISHIKO_CPP)/crypto';
 }
 
 template IshikoCrypto : Botan

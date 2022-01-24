@@ -71,7 +71,7 @@ endif
 # Path to the Botan installation
 ISHIKO_CPP_BOTAN_ROOT ?= $(ISHIKO_CPP_THIRD_PARTY_BOTAN)
 # Path to the Ishiko Crypto installation
-ISHIKO_CPP_CRYPTO_ROOT ?= $(ISHIKO_CPP)/Crypto
+ISHIKO_CPP_CRYPTO_ROOT ?= $(ISHIKO_CPP)/crypto
 # Path to the Ishiko BasePlatform installation
 ISHIKO_CPP_BASEPLATFORM_ROOT ?= $(ISHIKO_CPP)/base-platform
 # Path to the Ishiko Errors installation

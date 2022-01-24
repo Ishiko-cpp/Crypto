@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2017-2021 Xavier Leclercq
+    Copyright (c) 2017-2022 Xavier Leclercq
     Released under the MIT License
     See https://github.com/Ishiko-cpp/Crypto/blob/master/LICENSE.txt
 */
@@ -7,12 +7,12 @@
 #ifndef _ISHIKO_CRYPTO_TESTS_SHA512HASHTESTS_H_
 #define _ISHIKO_CRYPTO_TESTS_SHA512HASHTESTS_H_
 
-#include <Ishiko/TestFramework/TestFrameworkCore.h>
+#include <Ishiko/Tests/Core.hpp>
 
 class SHA512HashTests : public Ishiko::Tests::TestSequence
 {
 public:
-    SHA512HashTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
+    SHA512HashTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestContext& context);
 
 private:
     static void CreationTest1(Ishiko::Tests::Test& test);

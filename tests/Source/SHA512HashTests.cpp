@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2017-2021 Xavier Leclercq
+    Copyright (c) 2017-2022 Xavier Leclercq
     Released under the MIT License
     See https://github.com/Ishiko-cpp/Crypto/blob/master/LICENSE.txt
 */
@@ -12,8 +12,8 @@
 using namespace Ishiko::Crypto;
 using namespace Ishiko::Tests;
 
-SHA512HashTests::SHA512HashTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "SHA512Hash tests", environment)
+SHA512HashTests::SHA512HashTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "SHA512Hash tests", context)
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
     append<HeapAllocationErrorsTest>("value test 1", ValueTest1);
@@ -32,7 +32,7 @@ void SHA512HashTests::CreationTest1(Test& test)
 {
     SHA512Hash hash;
 
-    ISHTF_PASS();
+    ISHIKO_PASS();
 }
 
 void SHA512HashTests::ValueTest1(Test& test)
@@ -64,8 +64,8 @@ void SHA512HashTests::ValueTest1(Test& test)
         }
     }
 
-    ISHTF_FAIL_IF_NOT(equal);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NOT(equal);
+    ISHIKO_PASS();
 }
 
 void SHA512HashTests::ValueTest2(Test& test)
@@ -99,8 +99,8 @@ void SHA512HashTests::ValueTest2(Test& test)
         }
     }
 
-    ISHTF_FAIL_IF_NOT(equal);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NOT(equal);
+    ISHIKO_PASS();
 }
 
 void SHA512HashTests::ValueTest3(Test& test)
@@ -134,8 +134,8 @@ void SHA512HashTests::ValueTest3(Test& test)
         }
     }
 
-    ISHTF_FAIL_IF_NOT(equal);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NOT(equal);
+    ISHIKO_PASS();
 }
 
 void SHA512HashTests::ValueTest4(Test& test)
@@ -169,8 +169,8 @@ void SHA512HashTests::ValueTest4(Test& test)
         }
     }
 
-    ISHTF_FAIL_IF_NOT(equal);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NOT(equal);
+    ISHIKO_PASS();
 }
 
 void SHA512HashTests::ValueTest5(Test& test)
@@ -207,14 +207,14 @@ void SHA512HashTests::ValueTest5(Test& test)
         }
     }
 
-    ISHTF_FAIL_IF_NOT(equal);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NOT(equal);
+    ISHIKO_PASS();
 }
 
 void SHA512HashTests::UpdateFromFileTest1(Test& test)
 {
     SHA512Hash hash;
-    hash.updateFromFile((test.environment().getTestDataDirectory() / "EmptyFile.txt").string());
+    hash.updateFromFile((test.context().getTestDataDirectory() / "EmptyFile.txt").string());
     const std::array<unsigned char, 64>& value = hash.value();
 
     std::array<unsigned char, 64> referenceValue =
@@ -241,14 +241,14 @@ void SHA512HashTests::UpdateFromFileTest1(Test& test)
         }
     }
 
-    ISHTF_FAIL_IF_NOT(equal);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NOT(equal);
+    ISHIKO_PASS();
 }
 
 void SHA512HashTests::UpdateFromFileTest2(Test& test)
 {
     SHA512Hash hash;
-    hash.updateFromFile((test.environment().getTestDataDirectory() / "abc.txt").string());
+    hash.updateFromFile((test.context().getTestDataDirectory() / "abc.txt").string());
     const std::array<unsigned char, 64>& value = hash.value();
 
     std::array<unsigned char, 64> referenceValue =
@@ -275,14 +275,14 @@ void SHA512HashTests::UpdateFromFileTest2(Test& test)
         }
     }
 
-    ISHTF_FAIL_IF_NOT(equal);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NOT(equal);
+    ISHIKO_PASS();
 }
 
 void SHA512HashTests::UpdateFromFileTest3(Test& test)
 {
     SHA512Hash hash;
-    hash.updateFromFile((test.environment().getTestDataDirectory() / "smallfile.txt").string());
+    hash.updateFromFile((test.context().getTestDataDirectory() / "smallfile.txt").string());
     const std::array<unsigned char, 64>& value = hash.value();
 
     std::array<unsigned char, 64> referenceValue =
@@ -309,15 +309,15 @@ void SHA512HashTests::UpdateFromFileTest3(Test& test)
         }
     }
 
-    ISHTF_FAIL_IF_NOT(equal);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NOT(equal);
+    ISHIKO_PASS();
 }
 
 void SHA512HashTests::UpdateFromFileTest4(Test& test)
 {
     // Generate a file with a million 'a' characters in it
     // We generate the file because we do not want to store such a large file in version control
-    std::string testFilePath = (test.environment().getTestOutputDirectory() / "milliona.txt").string();
+    std::string testFilePath = (test.context().getTestOutputDirectory() / "milliona.txt").string();
     boost::filesystem::remove(testFilePath);
     std::ofstream testFile(testFilePath);
     for (size_t i = 0; i < 100000; ++i)
@@ -356,15 +356,15 @@ void SHA512HashTests::UpdateFromFileTest4(Test& test)
 
     boost::filesystem::remove(testFilePath);
     
-    ISHTF_FAIL_IF_NOT(equal);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NOT(equal);
+    ISHIKO_PASS();
 }
 
 void SHA512HashTests::UpdateFromFileTest5(Test& test)
 {
     // Generate a file with a million 'a' characters in it
     // We generate the file because we do not want to store such a large file in version control
-    std::string testFilePath = (test.environment().getTestOutputDirectory() / "gigabyte.txt").string();
+    std::string testFilePath = (test.context().getTestOutputDirectory() / "gigabyte.txt").string();
     boost::filesystem::remove(testFilePath);
     std::ofstream testFile(testFilePath);
     std::string text("abcdefghbcdefghicdefghijdefghijkefghijklfghijklmghijklmnhijklmno");
@@ -404,6 +404,6 @@ void SHA512HashTests::UpdateFromFileTest5(Test& test)
 
     boost::filesystem::remove(testFilePath);
     
-    ISHTF_FAIL_IF_NOT(equal);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NOT(equal);
+    ISHIKO_PASS();
 }

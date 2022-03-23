@@ -9,23 +9,23 @@
 
 #include <Ishiko/Tests/Core.hpp>
 
-class SHA512HashTests : public Ishiko::Tests::TestSequence
+class SHA512HashTests : public Ishiko::TestSequence
 {
 public:
-    SHA512HashTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestContext& context);
+    SHA512HashTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
 
 private:
-    static void CreationTest1(Ishiko::Tests::Test& test);
-    static void ValueTest1(Ishiko::Tests::Test& test);
-    static void ValueTest2(Ishiko::Tests::Test& test);
-    static void ValueTest3(Ishiko::Tests::Test& test);
-    static void ValueTest4(Ishiko::Tests::Test& test);
-    static void ValueTest5(Ishiko::Tests::Test& test);
-    static void UpdateFromFileTest1(Ishiko::Tests::Test& test);
-    static void UpdateFromFileTest2(Ishiko::Tests::Test& test);
-    static void UpdateFromFileTest3(Ishiko::Tests::Test& test);
-    static void UpdateFromFileTest4(Ishiko::Tests::Test& test);
-    static void UpdateFromFileTest5(Ishiko::Tests::Test& test);
+    static void CreationTest1(Ishiko::Test& test);
+    static void ValueTest1(Ishiko::Test& test);
+    static void ValueTest2(Ishiko::Test& test);
+    static void ValueTest3(Ishiko::Test& test);
+    static void ValueTest4(Ishiko::Test& test);
+    static void ValueTest5(Ishiko::Test& test);
+    static void UpdateFromFileTest1(Ishiko::Test& test);
+    static void UpdateFromFileTest2(Ishiko::Test& test);
+    static void UpdateFromFileTest3(Ishiko::Test& test);
+    static void UpdateFromFileTest4(Ishiko::Test& test);
+    static void UpdateFromFileTest5(Ishiko::Test& test);
 };
 
 #endif

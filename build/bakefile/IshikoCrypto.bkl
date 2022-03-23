@@ -13,7 +13,7 @@ library IshikoCrypto : Botan
 {
     archs = x86 x86_64;
 
-    includedirs += ../../Include/Ishiko/Crypto;
+    includedirs += ../../include/Ishiko/Crypto;
 
     if ($(toolset) == gnu)
     {
@@ -33,9 +33,9 @@ library IshikoCrypto : Botan
 
     headers
     {
-        ../../Include/Ishiko/Crypto.h
-        ../../Include/Ishiko/Crypto/SHA512Hash.h
-        ../../Include/Ishiko/Crypto/linkoptions.h
+        ../../include/Ishiko/Crypto.h
+        ../../include/Ishiko/Crypto/SHA512Hash.h
+        ../../include/Ishiko/Crypto/linkoptions.h
     }
 
     sources

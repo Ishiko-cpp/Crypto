@@ -9,7 +9,7 @@ setting ISHIKO_CPP_CRYPTO_ROOT
 
 template IshikoCrypto : Botan
 {
-    includedirs += $(ISHIKO_CPP_CRYPTO_ROOT)/Include;
+    includedirs += $(ISHIKO_CPP_CRYPTO_ROOT)/include;
 
     if ($(toolset) == gnu)
     {

@@ -9,8 +9,8 @@
 #include <boost/filesystem/operations.hpp>
 #include <fstream>
 
+using namespace Ishiko;
 using namespace Ishiko::Crypto;
-using namespace Ishiko::Tests;
 
 SHA512HashTests::SHA512HashTests(const TestNumber& number, const TestContext& context)
     : TestSequence(number, "SHA512Hash tests", context)
@@ -32,7 +32,7 @@ void SHA512HashTests::CreationTest1(Test& test)
 {
     SHA512Hash hash;
 
-    ISHIKO_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 void SHA512HashTests::ValueTest1(Test& test)
@@ -64,8 +64,8 @@ void SHA512HashTests::ValueTest1(Test& test)
         }
     }
 
-    ISHIKO_FAIL_IF_NOT(equal);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(equal);
+    ISHIKO_TEST_PASS();
 }
 
 void SHA512HashTests::ValueTest2(Test& test)
@@ -99,8 +99,8 @@ void SHA512HashTests::ValueTest2(Test& test)
         }
     }
 
-    ISHIKO_FAIL_IF_NOT(equal);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(equal);
+    ISHIKO_TEST_PASS();
 }
 
 void SHA512HashTests::ValueTest3(Test& test)
@@ -134,8 +134,8 @@ void SHA512HashTests::ValueTest3(Test& test)
         }
     }
 
-    ISHIKO_FAIL_IF_NOT(equal);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(equal);
+    ISHIKO_TEST_PASS();
 }
 
 void SHA512HashTests::ValueTest4(Test& test)
@@ -169,8 +169,8 @@ void SHA512HashTests::ValueTest4(Test& test)
         }
     }
 
-    ISHIKO_FAIL_IF_NOT(equal);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(equal);
+    ISHIKO_TEST_PASS();
 }
 
 void SHA512HashTests::ValueTest5(Test& test)
@@ -207,8 +207,8 @@ void SHA512HashTests::ValueTest5(Test& test)
         }
     }
 
-    ISHIKO_FAIL_IF_NOT(equal);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(equal);
+    ISHIKO_TEST_PASS();
 }
 
 void SHA512HashTests::UpdateFromFileTest1(Test& test)
@@ -241,8 +241,8 @@ void SHA512HashTests::UpdateFromFileTest1(Test& test)
         }
     }
 
-    ISHIKO_FAIL_IF_NOT(equal);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(equal);
+    ISHIKO_TEST_PASS();
 }
 
 void SHA512HashTests::UpdateFromFileTest2(Test& test)
@@ -275,8 +275,8 @@ void SHA512HashTests::UpdateFromFileTest2(Test& test)
         }
     }
 
-    ISHIKO_FAIL_IF_NOT(equal);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(equal);
+    ISHIKO_TEST_PASS();
 }
 
 void SHA512HashTests::UpdateFromFileTest3(Test& test)
@@ -309,8 +309,8 @@ void SHA512HashTests::UpdateFromFileTest3(Test& test)
         }
     }
 
-    ISHIKO_FAIL_IF_NOT(equal);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(equal);
+    ISHIKO_TEST_PASS();
 }
 
 void SHA512HashTests::UpdateFromFileTest4(Test& test)
@@ -356,8 +356,8 @@ void SHA512HashTests::UpdateFromFileTest4(Test& test)
 
     boost::filesystem::remove(testFilePath);
     
-    ISHIKO_FAIL_IF_NOT(equal);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(equal);
+    ISHIKO_TEST_PASS();
 }
 
 void SHA512HashTests::UpdateFromFileTest5(Test& test)
@@ -404,6 +404,6 @@ void SHA512HashTests::UpdateFromFileTest5(Test& test)
 
     boost::filesystem::remove(testFilePath);
     
-    ISHIKO_FAIL_IF_NOT(equal);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(equal);
+    ISHIKO_TEST_PASS();
 }

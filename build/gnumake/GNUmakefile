@@ -76,7 +76,7 @@ all: ../bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),IshikoCrypto-d
 	$(RANLIB) $@
 
 $(_builddir)IshikoCrypto_SHA512Hash.o: ../../Source/SHA512Hash.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_BOTAN_ROOT)/include/botan-2 -I../../Include/Ishiko/Crypto -std=c++11 ../../Source/SHA512Hash.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_BOTAN_ROOT)/include/botan-2 -I../../include/Ishiko/Crypto -std=c++11 ../../Source/SHA512Hash.cpp
 
 clean:
 	rm -f $(_builddir)*.o

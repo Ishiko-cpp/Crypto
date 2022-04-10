@@ -1,7 +1,7 @@
 /*
     Copyright (c) 2017-2022 Xavier Leclercq
     Released under the MIT License
-    See https://github.com/Ishiko-cpp/Crypto/blob/master/LICENSE.txt
+    See https://github.com/ishiko-cpp/crypto/blob/main/LICENSE.txt
 */
 
 #include "SHA512HashTests.h"

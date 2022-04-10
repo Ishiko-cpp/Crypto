@@ -28,7 +28,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\SHA512Hash.cpp">
+    <ClCompile Include="..\..\src\SHA512Hash.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -69,17 +69,17 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <TargetName>IshikoCrypto-d</TargetName>
-    <OutDir>..\bakefile\..\..\Lib\$(Platform)\</OutDir>
+    <OutDir>..\bakefile\..\..\lib\$(Platform)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetName>IshikoCrypto-d</TargetName>
-    <OutDir>..\bakefile\..\..\Lib\$(Platform)\</OutDir>
+    <OutDir>..\bakefile\..\..\lib\$(Platform)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>..\bakefile\..\..\Lib\$(Platform)\</OutDir>
+    <OutDir>..\bakefile\..\..\lib\$(Platform)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>..\bakefile\..\..\Lib\$(Platform)\</OutDir>
+    <OutDir>..\bakefile\..\..\lib\$(Platform)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -150,7 +150,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\SHA512Hash.cpp" />
+    <ClCompile Include="..\..\src\SHA512Hash.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\Ishiko\Crypto.h" />

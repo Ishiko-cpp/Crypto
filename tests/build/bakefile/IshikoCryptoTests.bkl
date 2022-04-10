@@ -1,6 +1,6 @@
 ishikopath = envvar("ISHIKO_CPP");
 import $(ishikopath)/crypto/Include/Ishiko/Crypto.bkl;
-import $(ishikopath)/test-framework/include/Ishiko/Tests/Core.bkl;
+import $(ishikopath)/test-framework/include/Ishiko/TestFramework/Core.bkl;
 
 toolsets = gnu vs2019 vs2017 vs2015 vs2013;
 
@@ -10,14 +10,14 @@ vs2017.solutionfile = ../vc15/IshikoCryptoTests.sln;
 vs2015.solutionfile = ../vc14/IshikoCryptoTests.sln;
 vs2013.solutionfile = ../vc12/IshikoCryptoTests.sln;
 
-program IshikoCryptoTests : IshikoCrypto, IshikoTestsCore
+program IshikoCryptoTests : IshikoCrypto, IshikoTestFrameworkCore
 {
     archs = x86 x86_64;
 
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
-        libs += IshikoCrypto IshikoTestsCore IshikoProcess IshikoErrors boost_filesystem boost_system;
+        libs += IshikoCrypto IshikoTestFrameworkCore IshikoProcess IshikoErrors boost_filesystem boost_system;
     }
 
     headers

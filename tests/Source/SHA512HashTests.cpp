@@ -214,7 +214,7 @@ void SHA512HashTests::ValueTest5(Test& test)
 void SHA512HashTests::UpdateFromFileTest1(Test& test)
 {
     SHA512Hash hash;
-    hash.updateFromFile((test.context().getTestDataDirectory() / "EmptyFile.txt").string());
+    hash.updateFromFile(test.context().getDataPath("EmptyFile.txt").string());
     const std::array<unsigned char, 64>& value = hash.value();
 
     std::array<unsigned char, 64> referenceValue =
@@ -248,7 +248,7 @@ void SHA512HashTests::UpdateFromFileTest1(Test& test)
 void SHA512HashTests::UpdateFromFileTest2(Test& test)
 {
     SHA512Hash hash;
-    hash.updateFromFile((test.context().getTestDataDirectory() / "abc.txt").string());
+    hash.updateFromFile(test.context().getDataPath("abc.txt").string());
     const std::array<unsigned char, 64>& value = hash.value();
 
     std::array<unsigned char, 64> referenceValue =
@@ -282,7 +282,7 @@ void SHA512HashTests::UpdateFromFileTest2(Test& test)
 void SHA512HashTests::UpdateFromFileTest3(Test& test)
 {
     SHA512Hash hash;
-    hash.updateFromFile((test.context().getTestDataDirectory() / "smallfile.txt").string());
+    hash.updateFromFile(test.context().getDataPath("smallfile.txt").string());
     const std::array<unsigned char, 64>& value = hash.value();
 
     std::array<unsigned char, 64> referenceValue =
@@ -317,7 +317,7 @@ void SHA512HashTests::UpdateFromFileTest4(Test& test)
 {
     // Generate a file with a million 'a' characters in it
     // We generate the file because we do not want to store such a large file in version control
-    std::string testFilePath = (test.context().getTestOutputDirectory() / "milliona.txt").string();
+    std::string testFilePath = test.context().getOutputPath("milliona.txt").string();
     boost::filesystem::remove(testFilePath);
     std::ofstream testFile(testFilePath);
     for (size_t i = 0; i < 100000; ++i)
@@ -364,7 +364,7 @@ void SHA512HashTests::UpdateFromFileTest5(Test& test)
 {
     // Generate a file with a million 'a' characters in it
     // We generate the file because we do not want to store such a large file in version control
-    std::string testFilePath = (test.context().getTestOutputDirectory() / "gigabyte.txt").string();
+    std::string testFilePath = test.context().getOutputPath("gigabyte.txt").string();
     boost::filesystem::remove(testFilePath);
     std::ofstream testFile(testFilePath);
     std::string text("abcdefghbcdefghicdefghijdefghijkefghijklfghijklmghijklmnhijklmno");

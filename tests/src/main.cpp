@@ -14,8 +14,8 @@ int main(int argc, char* argv[])
 {
     TestHarness theTestHarness("IshikoCrypto");
 
-    theTestHarness.context().setDataDirectory("../../TestData");
-    theTestHarness.context().setOutputDirectory("../../TestOutput");
+    theTestHarness.context().setDataDirectory("../../data");
+    theTestHarness.context().setOutputDirectory("../../output");
 
     TestSequence& theTests = theTestHarness.tests();
     theTests.append<SHA512HashTests>();

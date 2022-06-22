@@ -153,9 +153,9 @@
     <ClCompile Include="..\..\src\SHA512Hash.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\Ishiko\Crypto.h" />
-    <ClInclude Include="..\..\include\Ishiko\Crypto\SHA512Hash.h" />
-    <ClInclude Include="..\..\include\Ishiko\Crypto\linkoptions.h" />
+    <ClInclude Include="..\..\include\Ishiko\Crypto.hpp" />
+    <ClInclude Include="..\..\include\Ishiko\Crypto\linkoptions.hpp" />
+    <ClInclude Include="..\..\include\Ishiko\Crypto\SHA512Hash.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

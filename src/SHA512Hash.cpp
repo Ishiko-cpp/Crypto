@@ -1,16 +1,13 @@
 /*
-    Copyright (c) 2017-2021 Xavier Leclercq
+    Copyright (c) 2017-2022 Xavier Leclercq
     Released under the MIT License
-    See https://github.com/Ishiko-cpp/Crypto/blob/master/LICENSE.txt
+    See https://github.com/ishiko-cpp/crypto/blob/main/LICENSE.txt
 */
 
-#include "SHA512Hash.h"
+#include "SHA512Hash.hpp"
 #include <fstream>
 
-namespace Ishiko
-{
-namespace Crypto
-{
+using namespace Ishiko;
 
 SHA512Hash::SHA512Hash()
 {
@@ -41,7 +38,4 @@ const std::array<unsigned char, 64>& SHA512Hash::value() const
 {
     m_context.final(m_value.data());
     return m_value;
-}
-
-}
 }

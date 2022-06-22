@@ -4,8 +4,8 @@
     See https://github.com/ishiko-cpp/crypto/blob/main/LICENSE.txt
 */
 
-#ifndef _ISHIKO_CRYPTO_TESTS_SHA512HASHTESTS_H_
-#define _ISHIKO_CRYPTO_TESTS_SHA512HASHTESTS_H_
+#ifndef _ISHIKO_CPP_CRYPTO_TESTS_SHA512HASHTESTS_HPP_
+#define _ISHIKO_CPP_CRYPTO_TESTS_SHA512HASHTESTS_HPP_
 
 #include <Ishiko/TestFramework/Core.hpp>
 

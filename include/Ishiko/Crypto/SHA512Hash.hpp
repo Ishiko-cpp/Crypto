@@ -1,18 +1,16 @@
 /*
-    Copyright (c) 2017-2021 Xavier Leclercq
+    Copyright (c) 2017-2022 Xavier Leclercq
     Released under the MIT License
-    See https://github.com/Ishiko-cpp/Crypto/blob/master/LICENSE.txt
+    See https://github.com/ishiko-cpp/crypto/blob/main/LICENSE.txt
 */
 
-#ifndef _ISHIKO_CRYPTO_SHA512HASH_H_
-#define _ISHIKO_CRYPTO_SHA512HASH_H_
+#ifndef _ISHIKO_CPP_CRYPTO_SHA512HASH_HPP_
+#define _ISHIKO_CPP_CRYPTO_SHA512HASH_HPP_
 
 #include <botan/sha2_64.h>
 #include <array>
 
 namespace Ishiko
-{
-namespace Crypto
 {
 
 /// This class holds a SHA-512 hash and functions to update it.
@@ -50,8 +48,5 @@ private:
 };
 
 }
-}
-
-#include "linkoptions.h"
 
 #endif

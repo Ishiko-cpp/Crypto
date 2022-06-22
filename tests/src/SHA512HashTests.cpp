@@ -4,13 +4,12 @@
     See https://github.com/ishiko-cpp/crypto/blob/main/LICENSE.txt
 */
 
-#include "SHA512HashTests.h"
-#include "Ishiko/Crypto/SHA512Hash.h"
+#include "SHA512HashTests.hpp"
+#include "Ishiko/Crypto/SHA512Hash.hpp"
 #include <boost/filesystem/operations.hpp>
 #include <fstream>
 
 using namespace Ishiko;
-using namespace Ishiko::Crypto;
 
 SHA512HashTests::SHA512HashTests(const TestNumber& number, const TestContext& context)
     : TestSequence(number, "SHA512Hash tests", context)

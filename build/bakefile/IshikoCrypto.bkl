@@ -33,9 +33,9 @@ library IshikoCrypto : Botan
 
     headers
     {
-        ../../include/Ishiko/Crypto.h
-        ../../include/Ishiko/Crypto/SHA512Hash.h
-        ../../include/Ishiko/Crypto/linkoptions.h
+        ../../include/Ishiko/Crypto.hpp
+        ../../include/Ishiko/Crypto/linkoptions.hpp
+        ../../include/Ishiko/Crypto/SHA512Hash.hpp
     }
 
     sources

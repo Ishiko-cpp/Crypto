@@ -4,7 +4,7 @@
     See https://github.com/ishiko-cpp/crypto/blob/main/LICENSE.txt
 */
 
-#include "SHA512HashTests.h"
+#include "SHA512HashTests.hpp"
 #include "Ishiko/Crypto/linkoptions.hpp"
 #include <Ishiko/TestFramework/Core.hpp>
 

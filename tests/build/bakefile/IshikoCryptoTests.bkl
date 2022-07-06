@@ -17,8 +17,8 @@ program IshikoCryptoTests : IshikoCrypto, IshikoTestFrameworkCore
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
-        libs += IshikoCrypto IshikoTestFrameworkCore IshikoConfiguration IshikoXML IshikoFileSystem IshikoProcess IshikoText IshikoErrors;
-        libs += botan-2 boost_filesystem;
+        libs += IshikoCrypto IshikoTestFrameworkCore IshikoConfiguration IshikoXML IshikoFileSystem IshikoProcess IshikoTime IshikoText IshikoErrors;
+        libs += botan-2 fmt boost_filesystem;
     }
 
     headers

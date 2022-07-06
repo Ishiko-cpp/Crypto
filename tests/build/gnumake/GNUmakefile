@@ -41,6 +41,7 @@ endif
 #      ISHIKO_CPP_CRYPTO_ROOT         Path to the Ishiko Crypto installation
 #      ISHIKO_CPP_BASEPLATFORM_ROOT   Path to the Ishiko BasePlatform installation
 #      ISHIKO_CPP_ERRORS_ROOT         Path to the Ishiko Errors installation
+#      ISHIKO_CPP_MEMORY_ROOT         Path to the Ishiko/C++ Memory installation
 #      ISHIKO_CPP_BOOST_ROOT          Path to the Boost installation
 #      ISHIKO_CPP_TEXT_ROOT           Path to the Ishiko/Text installation
 #      ISHIKO_CPP_CONFIGURATION_ROOT  Path to the Ishiko Configuration installation
@@ -48,6 +49,8 @@ endif
 #      ISHIKO_CPP_TYPES_ROOT          Path to the Ishiko Types installation
 #      ISHIKO_CPP_DIFF_ROOT           Path to the Ishiko Diff installation
 #      ISHIKO_CPP_PROCESS_ROOT        Path to the Ishiko Process installation
+#      ISHIKO_CPP_FMT_ROOT            Path to the fmt installation
+#      ISHIKO_CPP_TIME_ROOT           Path to the Ishiko Timeinstallation
 #      ISHIKO_CPP_PUGIXML_ROOT        Path to the pugixml installation
 #      ISHIKO_CPP_XML_ROOT            Path to the Ishiko XML installation
 #      ISHIKO_CPP_TESTFRAMEWORK_ROOT  Path to the Ishiko TestFramework installation
@@ -79,6 +82,8 @@ ISHIKO_CPP_CRYPTO_ROOT ?= $(ISHIKO_CPP)/crypto
 ISHIKO_CPP_BASEPLATFORM_ROOT ?= $(ISHIKO_CPP)/base-platform
 # Path to the Ishiko Errors installation
 ISHIKO_CPP_ERRORS_ROOT ?= $(ISHIKO_CPP)/errors
+# Path to the Ishiko/C++ Memory installation
+ISHIKO_CPP_MEMORY_ROOT ?= $(ISHIKO_CPP)/memory
 # Path to the Boost installation
 ISHIKO_CPP_BOOST_ROOT ?= $(ISHIKO_CPP_THIRD_PARTY_BOOST)
 # Path to the Ishiko/Text installation
@@ -93,6 +98,10 @@ ISHIKO_CPP_TYPES_ROOT ?= $(ISHIKO_CPP)/types
 ISHIKO_CPP_DIFF_ROOT ?= $(ISHIKO_CPP)/diff
 # Path to the Ishiko Process installation
 ISHIKO_CPP_PROCESS_ROOT ?= $(ISHIKO_CPP)/process
+# Path to the fmt installation
+ISHIKO_CPP_FMT_ROOT ?= $(ISHIKO_CPP_THIRD_PARTY_FMT)
+# Path to the Ishiko Timeinstallation
+ISHIKO_CPP_TIME_ROOT ?= $(ISHIKO_CPP)/time
 # Path to the pugixml installation
 ISHIKO_CPP_PUGIXML_ROOT ?= $(ISHIKO_CPP_THIRD_PARTY_PUGIXML)
 # Path to the Ishiko XML installation
@@ -105,13 +114,13 @@ ISHIKO_CPP_TESTFRAMEWORK_ROOT ?= $(ISHIKO_CPP)/test-framework
 all: $(_builddir)IshikoCryptoTests
 
 $(_builddir)IshikoCryptoTests: $(_builddir)IshikoCryptoTests_main.o $(_builddir)IshikoCryptoTests_SHA512HashTests.o
-	$(CXX) -o $@ $(LDFLAGS) $(_builddir)IshikoCryptoTests_main.o $(_builddir)IshikoCryptoTests_SHA512HashTests.o -L$(ISHIKO_CPP_BOTAN_ROOT)/lib -L$(ISHIKO_CPP_CRYPTO_ROOT)/lib -L$(ISHIKO_CPP_ERRORS_ROOT)/lib -L$(ISHIKO_CPP_BOOST_ROOT)/lib -L$(ISHIKO_CPP_TEXT_ROOT)/lib -L$(ISHIKO_CPP_CONFIGURATION_ROOT)/lib -L$(ISHIKO_CPP_FILESYSTEM_ROOT)/lib -L$(ISHIKO_CPP_TYPES_ROOT)/lib -L$(ISHIKO_CPP_DIFF_ROOT)/lib -L$(ISHIKO_CPP_XML_ROOT)/lib -L$(ISHIKO_CPP_PROCESS_ROOT)/lib -L$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/lib -lIshikoCrypto -lIshikoTestFrameworkCore -lIshikoConfiguration -lIshikoXML -lIshikoFileSystem -lIshikoProcess -lIshikoText -lIshikoErrors -lbotan-2 -lboost_filesystem -pthread
+	$(CXX) -o $@ $(LDFLAGS) $(_builddir)IshikoCryptoTests_main.o $(_builddir)IshikoCryptoTests_SHA512HashTests.o -L$(ISHIKO_CPP_BOTAN_ROOT)/lib -L$(ISHIKO_CPP_CRYPTO_ROOT)/lib -L$(ISHIKO_CPP_MEMORY_ROOT)/lib -L$(ISHIKO_CPP_ERRORS_ROOT)/lib -L$(ISHIKO_CPP_BOOST_ROOT)/lib -L$(ISHIKO_CPP_TEXT_ROOT)/lib -L$(ISHIKO_CPP_CONFIGURATION_ROOT)/lib -L$(ISHIKO_CPP_FILESYSTEM_ROOT)/lib -L$(ISHIKO_CPP_TYPES_ROOT)/lib -L$(ISHIKO_CPP_DIFF_ROOT)/lib -L$(ISHIKO_CPP_XML_ROOT)/lib -L$(ISHIKO_CPP_PROCESS_ROOT)/lib -L$(ISHIKO_CPP_FMT_ROOT)/lib -L$(ISHIKO_CPP_TIME_ROOT)/lib -L$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/lib -lIshikoCrypto -lIshikoTestFrameworkCore -lIshikoConfiguration -lIshikoXML -lIshikoFileSystem -lIshikoProcess -lIshikoText -lIshikoErrors -lbotan-2 -lboost_filesystem -pthread
 
 $(_builddir)IshikoCryptoTests_main.o: ../../src/main.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -DPUGIXML_HEADER_ONLY -I$(ISHIKO_CPP_BOTAN_ROOT)/include/botan-2 -I$(ISHIKO_CPP_CRYPTO_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(ISHIKO_CPP_CONFIGURATION_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_PUGIXML_ROOT)/src -I$(ISHIKO_CPP_XML_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/include -std=c++11 ../../src/main.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -DPUGIXML_HEADER_ONLY -I$(ISHIKO_CPP_BOTAN_ROOT)/include/botan-2 -I$(ISHIKO_CPP_CRYPTO_ROOT)/include -I$(ISHIKO_CPP_MEMORY_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(ISHIKO_CPP_CONFIGURATION_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_PUGIXML_ROOT)/src -I$(ISHIKO_CPP_XML_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I$(ISHIKO_CPP_FMT_ROOT)/include -I$(ISHIKO_CPP_TIME_ROOT)/include -I$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/include -std=c++11 ../../src/main.cpp
 
 $(_builddir)IshikoCryptoTests_SHA512HashTests.o: ../../src/SHA512HashTests.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -DPUGIXML_HEADER_ONLY -I$(ISHIKO_CPP_BOTAN_ROOT)/include/botan-2 -I$(ISHIKO_CPP_CRYPTO_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(ISHIKO_CPP_CONFIGURATION_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_PUGIXML_ROOT)/src -I$(ISHIKO_CPP_XML_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/include -std=c++11 ../../src/SHA512HashTests.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -DPUGIXML_HEADER_ONLY -I$(ISHIKO_CPP_BOTAN_ROOT)/include/botan-2 -I$(ISHIKO_CPP_CRYPTO_ROOT)/include -I$(ISHIKO_CPP_MEMORY_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(ISHIKO_CPP_CONFIGURATION_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_PUGIXML_ROOT)/src -I$(ISHIKO_CPP_XML_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I$(ISHIKO_CPP_FMT_ROOT)/include -I$(ISHIKO_CPP_TIME_ROOT)/include -I$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/include -std=c++11 ../../src/SHA512HashTests.cpp
 
 clean:
 	rm -f $(_builddir)*.o

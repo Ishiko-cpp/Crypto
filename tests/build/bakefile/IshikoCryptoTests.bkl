@@ -18,7 +18,7 @@ program IshikoCryptoTests : IshikoCrypto, IshikoTestFrameworkCore
     {
         cxx-compiler-options = "-std=c++11";
         libs += IshikoCrypto IshikoTestFrameworkCore IshikoConfiguration IshikoXML IshikoFileSystem IshikoProcess IshikoTime IshikoText IshikoErrors;
-        libs += botan-2 boost_filesystem;
+        libs += botan-2 fmt boost_filesystem;
     }
 
     headers

@@ -65,7 +65,7 @@ endif
 # 
 
 # Path to the Botan installation
-ISHIKO_CPP_BOTAN_ROOT ?= $(ISHIKO_CPP_THIRD_PARTY_BOTAN)
+ISHIKO_CPP_BOTAN_ROOT ?= $(BOTAN_ROOT)
 
 # ------------
 

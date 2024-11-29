@@ -18,6 +18,11 @@ private:
     static void ValueTest3(Ishiko::Test& test);
     static void ValueTest4(Ishiko::Test& test);
     static void ValueTest5(Ishiko::Test& test);
+    static void UpdateFromFileTest1(Ishiko::Test& test);
+    static void UpdateFromFileTest2(Ishiko::Test& test);
+    static void UpdateFromFileTest3(Ishiko::Test& test);
+    static void UpdateFromFileTest4(Ishiko::Test& test);
+    static void UpdateFromFileTest5(Ishiko::Test& test);
 };
 
 #endif

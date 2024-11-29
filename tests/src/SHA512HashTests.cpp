@@ -34,7 +34,7 @@ void SHA512HashTests::CreationTest1(Test& test)
 void SHA512HashTests::ValueTest1(Test& test)
 {
     SHA512Hash hash;
-    const std::array<unsigned char, 64>& value = hash.value();
+    const StackByteBuffer<64>& value = hash.value();
    
     std::array<unsigned char, 64> referenceValue =
     {
@@ -69,7 +69,7 @@ void SHA512HashTests::ValueTest2(Test& test)
     SHA512Hash hash;
     const char* text = "abc";
     hash.update(text, strlen(text));
-    const std::array<unsigned char, 64>& value = hash.value();
+    const StackByteBuffer<64>& value = hash.value();
 
     std::array<unsigned char, 64> referenceValue =
     {
@@ -104,7 +104,7 @@ void SHA512HashTests::ValueTest3(Test& test)
     SHA512Hash hash;
     const char* text = "abcdefghbcdefghicdefghijdefghijkefghijklfghijklmghijklmnhijklmnoijklmnopjklmnopqklmnopqrlmnopqrsmnopqrstnopqrstu";
     hash.update(text, strlen(text));
-    const std::array<unsigned char, 64>& value = hash.value();
+    const StackByteBuffer<64>& value = hash.value();
 
     std::array<unsigned char, 64> referenceValue =
     {
@@ -139,7 +139,7 @@ void SHA512HashTests::ValueTest4(Test& test)
     SHA512Hash hash;
     std::string text(1000000, 'a');
     hash.update(text.c_str(), text.size());
-    const std::array<unsigned char, 64>& value = hash.value();
+    const StackByteBuffer<64>& value = hash.value();
 
     std::array<unsigned char, 64> referenceValue =
     {
@@ -177,7 +177,7 @@ void SHA512HashTests::ValueTest5(Test& test)
     {
         hash.update(text.c_str(), text.size());
     }
-    const std::array<unsigned char, 64>& value = hash.value();
+    const StackByteBuffer<64>& value = hash.value();
 
     std::array<unsigned char, 64> referenceValue =
     {
@@ -211,7 +211,7 @@ void SHA512HashTests::UpdateFromFileTest1(Test& test)
 {
     SHA512Hash hash;
     hash.updateFromFile(test.context().getDataPath("EmptyFile.txt").string());
-    const std::array<unsigned char, 64>& value = hash.value();
+    const StackByteBuffer<64>& value = hash.value();
 
     std::array<unsigned char, 64> referenceValue =
     {
@@ -245,7 +245,7 @@ void SHA512HashTests::UpdateFromFileTest2(Test& test)
 {
     SHA512Hash hash;
     hash.updateFromFile(test.context().getDataPath("abc.txt").string());
-    const std::array<unsigned char, 64>& value = hash.value();
+    const StackByteBuffer<64>& value = hash.value();
 
     std::array<unsigned char, 64> referenceValue =
     {
@@ -279,7 +279,7 @@ void SHA512HashTests::UpdateFromFileTest3(Test& test)
 {
     SHA512Hash hash;
     hash.updateFromFile(test.context().getDataPath("smallfile.txt").string());
-    const std::array<unsigned char, 64>& value = hash.value();
+    const StackByteBuffer<64>& value = hash.value();
 
     std::array<unsigned char, 64> referenceValue =
     {
@@ -324,7 +324,7 @@ void SHA512HashTests::UpdateFromFileTest4(Test& test)
 
     SHA512Hash hash;
     hash.updateFromFile(testFilePath);
-    const std::array<unsigned char, 64>& value = hash.value();
+    const StackByteBuffer<64>& value = hash.value();
 
     std::array<unsigned char, 64> referenceValue =
     {
@@ -372,7 +372,7 @@ void SHA512HashTests::UpdateFromFileTest5(Test& test)
 
     SHA512Hash hash;
     hash.updateFromFile(testFilePath);
-    const std::array<unsigned char, 64>& value = hash.value();
+    const StackByteBuffer<64>& value = hash.value();
 
     std::array<unsigned char, 64> referenceValue =
     {

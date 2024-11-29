@@ -4,6 +4,7 @@
 #ifndef GUARD_ISHIKO_CPP_CRYPTO_SHA256HASH_HPP
 #define GUARD_ISHIKO_CPP_CRYPTO_SHA256HASH_HPP
 
+#include <Ishiko/Memory.hpp>
 #include <botan/sha2_32.h>
 #include <array>
 
@@ -13,6 +14,8 @@ namespace Ishiko
     class SHA256Hash
     {
     public:
+        typedef StackByteBuffer<32> Value;
+
         /// The constructor.
         SHA256Hash();
 
@@ -36,11 +39,11 @@ namespace Ishiko
             @see update
             @see updateFromFile
         */
-        const std::array<unsigned char, 32>& value() const;
+        const Value& value() const;
 
     private:
         mutable Botan::SHA_256 m_context;
-        mutable std::array<unsigned char, 32> m_value;
+        mutable Value m_value;
     };
 }
 

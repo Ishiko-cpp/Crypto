@@ -31,7 +31,7 @@ void SHA512Hash::updateFromFile(const std::string& filePath)
     update(buffer, input.gcount());
 }
 
-const StackByteBuffer<64>& SHA512Hash::value() const
+const SHA512Hash::Value& SHA512Hash::value() const
 {
     m_context.final(m_value.data());
     return m_value;

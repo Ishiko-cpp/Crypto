@@ -14,6 +14,8 @@ namespace Ishiko
     class SHA512Hash
     {
     public:
+        typedef StackByteBuffer<64> Value;
+
         /// The constructor.
         SHA512Hash();
 
@@ -37,11 +39,11 @@ namespace Ishiko
             @see update
             @see updateFromFile
         */
-        const StackByteBuffer<64>& value() const;
+        const Value& value() const;
 
     private:
         mutable Botan::SHA_512 m_context;
-        mutable StackByteBuffer<64> m_value;
+        mutable Value m_value;
     };
 }
 

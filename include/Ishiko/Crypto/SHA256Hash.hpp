@@ -14,6 +14,8 @@ namespace Ishiko
     class SHA256Hash
     {
     public:
+        typedef StackByteBuffer<32> Value;
+
         /// The constructor.
         SHA256Hash();
 
@@ -37,11 +39,11 @@ namespace Ishiko
             @see update
             @see updateFromFile
         */
-        const StackByteBuffer<32>& value() const;
+        const Value& value() const;
 
     private:
         mutable Botan::SHA_256 m_context;
-        mutable StackByteBuffer<32> m_value;
+        mutable Value m_value;
     };
 }
 

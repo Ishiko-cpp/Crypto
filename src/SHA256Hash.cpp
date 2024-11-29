@@ -31,7 +31,7 @@ void SHA256Hash::updateFromFile(const std::string& filePath)
     update(buffer, input.gcount());
 }
 
-const StackByteBuffer<32>& SHA256Hash::value() const
+const SHA256Hash::Value& SHA256Hash::value() const
 {
     m_context.final(m_value.data());
     return m_value;

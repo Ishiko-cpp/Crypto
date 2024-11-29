@@ -71,9 +71,12 @@ ISHIKO_CPP_BOTAN_ROOT ?= $(BOTAN_ROOT)
 
 all: ../bakefile/../../lib/lib$(if $(call _equal,$(config),Debug),IshikoCrypto-d,IshikoCrypto).a
 
-../bakefile/../../lib/lib$(if $(call _equal,$(config),Debug),IshikoCrypto-d,IshikoCrypto).a: $(_builddir)IshikoCrypto_SHA512Hash.o
-	$(AR) rc $@ $(_builddir)IshikoCrypto_SHA512Hash.o
+../bakefile/../../lib/lib$(if $(call _equal,$(config),Debug),IshikoCrypto-d,IshikoCrypto).a: $(_builddir)IshikoCrypto_SHA256Hash.o $(_builddir)IshikoCrypto_SHA512Hash.o
+	$(AR) rc $@ $(_builddir)IshikoCrypto_SHA256Hash.o $(_builddir)IshikoCrypto_SHA512Hash.o
 	$(RANLIB) $@
+
+$(_builddir)IshikoCrypto_SHA256Hash.o: ../../src/SHA256Hash.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_BOTAN_ROOT)/include/botan-2 -I../../include/Ishiko/Crypto -std=c++11 ../../src/SHA256Hash.cpp
 
 $(_builddir)IshikoCrypto_SHA512Hash.o: ../../src/SHA512Hash.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_BOTAN_ROOT)/include/botan-2 -I../../include/Ishiko/Crypto -std=c++11 ../../src/SHA512Hash.cpp

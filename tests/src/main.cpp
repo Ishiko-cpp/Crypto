@@ -1,9 +1,7 @@
-/*
-    Copyright (c) 2021-2022 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/ishiko-cpp/crypto/blob/main/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2000-2024 Xavier Leclercq
+// SPDX-License-Identifier: MIT
 
+#include "SHA256HashTests.hpp"
 #include "SHA512HashTests.hpp"
 #include "Ishiko/Crypto/linkoptions.hpp"
 #include <Ishiko/TestFramework/Core.hpp>
@@ -18,6 +16,7 @@ int main(int argc, char* argv[])
     theTestHarness.context().setOutputDirectory("../../output");
 
     TestSequence& theTests = theTestHarness.tests();
+    theTests.append<SHA256HashTests>();
     theTests.append<SHA512HashTests>();
 
     return theTestHarness.run();

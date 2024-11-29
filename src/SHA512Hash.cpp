@@ -1,8 +1,5 @@
-/*
-    Copyright (c) 2017-2022 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/ishiko-cpp/crypto/blob/main/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2000-2024 Xavier Leclercq
+// SPDX-License-Identifier: MIT
 
 #include "SHA512Hash.hpp"
 #include <fstream>

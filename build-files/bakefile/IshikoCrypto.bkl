@@ -35,11 +35,13 @@ library IshikoCrypto : Botan
     {
         ../../include/Ishiko/Crypto.hpp
         ../../include/Ishiko/Crypto/linkoptions.hpp
+        ../../include/Ishiko/Crypto/SHA256Hash.hpp
         ../../include/Ishiko/Crypto/SHA512Hash.hpp
     }
 
     sources
     {
+        ../../src/SHA256Hash.cpp
         ../../src/SHA512Hash.cpp
     }
 }

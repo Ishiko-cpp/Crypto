@@ -23,12 +23,14 @@ program IshikoCryptoTests : IshikoCrypto, IshikoTestFrameworkCore
 
     headers
     {
+        ../../src/SHA256HashTests.hpp
         ../../src/SHA512HashTests.hpp
     }
 
     sources
     {
         ../../src/main.cpp
+        ../../src/SHA256HashTests.cpp
         ../../src/SHA512HashTests.cpp
     }
 }

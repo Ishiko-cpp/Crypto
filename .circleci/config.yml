@@ -8,6 +8,9 @@ jobs:
           name: "Set ISHIKO_CPP_ROOT environment variable and create workspace directory"
           command: mkdir -p /worskpace/projects/ishiko/cpp && echo 'export ISHIKO_CPP_ROOT="/worskpace/projects/ishiko/cpp"' >> $BASH_ENV
       - run:
+          name: "Install test dependency: Ishiko/C++ BasePlatform"
+          command: cd /worskpace/projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/base-platform.git && cd base-platform/build-files/gnumake && make
+      - run:
           name: "Install build dependency: Ishiko/C++ Errors"
           command: cd /worskpace/projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/errors.git && cd errors/build-files/gnumake && make
       - run:
@@ -18,9 +21,6 @@ jobs:
       - run:
           name: Build
           command: cd /worskpace/projects/ishiko/cpp/crypto/build-files/gnumake && make
-      - run:
-          name: "Install test dependency: Ishiko/C++ BasePlatform"
-          command: cd /worskpace/projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/base-platform.git && cd base-platform/build-files/gnumake && make
       - run:
           name: "Install test dependency: Ishiko/C++ Types"
           command: cd /worskpace/projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/types.git && cd types/build-files/gnumake && make

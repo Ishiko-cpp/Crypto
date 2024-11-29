@@ -150,11 +150,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\SHA256Hash.cpp" />
     <ClCompile Include="..\..\src\SHA512Hash.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\Ishiko\Crypto.hpp" />
     <ClInclude Include="..\..\include\Ishiko\Crypto\linkoptions.hpp" />
+    <ClInclude Include="..\..\include\Ishiko\Crypto\SHA256Hash.hpp" />
     <ClInclude Include="..\..\include\Ishiko\Crypto\SHA512Hash.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

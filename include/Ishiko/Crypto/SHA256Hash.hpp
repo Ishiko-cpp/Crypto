@@ -1,20 +1,20 @@
 // SPDX-FileCopyrightText: 2000-2024 Xavier Leclercq
 // SPDX-License-Identifier: MIT
 
-#ifndef GUARD_ISHIKO_CPP_CRYPTO_SHA512HASH_HPP
-#define GUARD_ISHIKO_CPP_CRYPTO_SHA512HASH_HPP
+#ifndef GUARD_ISHIKO_CPP_CRYPTO_SHA256HASH_HPP
+#define GUARD_ISHIKO_CPP_CRYPTO_SHA256HASH_HPP
 
-#include <botan/sha2_64.h>
+#include <botan/sha2_32.h>
 #include <array>
 
 namespace Ishiko
 {
-    /// This class holds a SHA-512 hash and functions to update it.
-    class SHA512Hash
+    /// This class holds a SHA-256 hash and functions to update it.
+    class SHA256Hash
     {
     public:
         /// The constructor.
-        SHA512Hash();
+        SHA256Hash();
 
         /// Recomputes the value of the hash based on additional data.
         /**
@@ -32,15 +32,15 @@ namespace Ishiko
         void updateFromFile(const std::string& filePath);
         /// Gets the current value of the hash based on the input data passed by the various update functions so far.
         /**
-            @return A 512 bit array with the value of the hash.
+            @return A 256 bit array with the value of the hash.
             @see update
             @see updateFromFile
         */
-        const std::array<unsigned char, 64>& value() const;
+        const std::array<unsigned char, 32>& value() const;
 
     private:
-        mutable Botan::SHA_512 m_context;
-        mutable std::array<unsigned char, 64> m_value;
+        mutable Botan::SHA_256 m_context;
+        mutable std::array<unsigned char, 32> m_value;
     };
 }
 

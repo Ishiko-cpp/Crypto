@@ -1,15 +1,13 @@
 // SPDX-FileCopyrightText: 2000-2024 Xavier Leclercq
 // SPDX-License-Identifier: MIT
 
-#include "SHA512HashTests.hpp"
-#include "Ishiko/Crypto/SHA512Hash.hpp"
-#include <boost/filesystem/operations.hpp>
-#include <fstream>
+#include "SHA256HashTests.hpp"
+#include "Ishiko/Crypto/SHA256Hash.hpp"
 
 using namespace Ishiko;
 
-SHA512HashTests::SHA512HashTests(const TestNumber& number, const TestContext& context)
-    : TestSequence(number, "SHA512Hash tests", context)
+SHA256HashTests::SHA256HashTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "SHA256Hash tests", context)
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
     append<HeapAllocationErrorsTest>("value test 1", ValueTest1);
@@ -24,34 +22,30 @@ SHA512HashTests::SHA512HashTests(const TestNumber& number, const TestContext& co
     append<HeapAllocationErrorsTest>("updateFromFile test 5", UpdateFromFileTest5);
 }
 
-void SHA512HashTests::CreationTest1(Test& test)
+void SHA256HashTests::CreationTest1(Test& test)
 {
-    SHA512Hash hash;
+    SHA256Hash hash;
 
     ISHIKO_TEST_PASS();
 }
 
-void SHA512HashTests::ValueTest1(Test& test)
+void SHA256HashTests::ValueTest1(Test& test)
 {
-    SHA512Hash hash;
-    const std::array<unsigned char, 64>& value = hash.value();
-   
-    std::array<unsigned char, 64> referenceValue =
+    SHA256Hash hash;
+    const std::array<unsigned char, 32>& value = hash.value();
+
+    std::array<unsigned char, 32> referenceValue =
     {
-        0xcf, 0x83, 0xe1, 0x35, 0x7e, 0xef, 0xb8, 0xbd,
-        0xf1, 0x54, 0x28, 0x50, 0xd6, 0x6d, 0x80, 0x07,
-        0xd6, 0x20, 0xe4, 0x05, 0x0b, 0x57, 0x15, 0xdc,
-        0x83, 0xf4, 0xa9, 0x21, 0xd3, 0x6c, 0xe9, 0xce,
-        0x47, 0xd0, 0xd1, 0x3c, 0x5d, 0x85, 0xf2, 0xb0,
-        0xff, 0x83, 0x18, 0xd2, 0x87, 0x7e, 0xec, 0x2f,
-        0x63, 0xb9, 0x31, 0xbd, 0x47, 0x41, 0x7a, 0x81,
-        0xa5, 0x38, 0x32, 0x7a, 0xf9, 0x27, 0xda, 0x3e
+        0xe3, 0xb0, 0xc4, 0x42, 0x98, 0xfc, 0x1c, 0x14,
+        0x9a, 0xfb, 0xf4, 0xc8, 0x99, 0x6f, 0xb9, 0x24,
+        0x27, 0xae, 0x41, 0xe4, 0x64, 0x9b, 0x93, 0x4c,
+        0xa4, 0x95, 0x99, 0x1b, 0x78, 0x52, 0xb8, 0x55
     };
 
     // We don't use the operator == to make it easier to
     // debug
     bool equal = true;
-    for (size_t i = 0; i < 64; ++i)
+    for (size_t i = 0; i < 32; ++i)
     {
         if (value[i] != referenceValue[i])
         {
@@ -64,29 +58,25 @@ void SHA512HashTests::ValueTest1(Test& test)
     ISHIKO_TEST_PASS();
 }
 
-void SHA512HashTests::ValueTest2(Test& test)
+void SHA256HashTests::ValueTest2(Test& test)
 {
-    SHA512Hash hash;
+    SHA256Hash hash;
     const char* text = "abc";
     hash.update(text, strlen(text));
-    const std::array<unsigned char, 64>& value = hash.value();
+    const std::array<unsigned char, 32>& value = hash.value();
 
-    std::array<unsigned char, 64> referenceValue =
+    std::array<unsigned char, 32> referenceValue =
     {
-        0xDD, 0xAF, 0x35, 0xA1, 0x93, 0x61, 0x7A, 0xBA,
-        0xCC, 0x41, 0x73, 0x49, 0xAE, 0x20, 0x41, 0x31,
-        0x12, 0xE6, 0xFA, 0x4E, 0x89, 0xA9, 0x7E, 0xA2,
-        0x0A, 0x9E, 0xEE, 0xE6, 0x4B, 0x55, 0xD3, 0x9A,
-        0x21, 0x92, 0x99, 0x2A, 0x27, 0x4F, 0xC1, 0xA8,
-        0x36, 0xBA, 0x3C, 0x23, 0xA3, 0xFE, 0xEB, 0xBD,
-        0x45, 0x4D, 0x44, 0x23, 0x64, 0x3C, 0xE8, 0x0E,
-        0x2A, 0x9A, 0xC9, 0x4F, 0xA5, 0x4C, 0xA4, 0x9F
+        0xba, 0x78, 0x16, 0xbf, 0x8f, 0x01, 0xcf, 0xea,
+        0x41, 0x41, 0x40, 0xde, 0x5d, 0xae, 0x22, 0x23,
+        0xb0, 0x03, 0x61, 0xa3, 0x96, 0x17, 0x7a, 0x9c,
+        0xb4, 0x10, 0xff, 0x61, 0xf2, 0x00, 0x15, 0xad
     };
 
     // We don't use the operator == to make it easier to
     // debug
     bool equal = true;
-    for (size_t i = 0; i < 64; ++i)
+    for (size_t i = 0; i < 32; ++i)
     {
         if (value[i] != referenceValue[i])
         {
@@ -99,12 +89,12 @@ void SHA512HashTests::ValueTest2(Test& test)
     ISHIKO_TEST_PASS();
 }
 
-void SHA512HashTests::ValueTest3(Test& test)
+void SHA256HashTests::ValueTest3(Test& test)
 {
-    SHA512Hash hash;
+    SHA256Hash hash;
     const char* text = "abcdefghbcdefghicdefghijdefghijkefghijklfghijklmghijklmnhijklmnoijklmnopjklmnopqklmnopqrlmnopqrsmnopqrstnopqrstu";
     hash.update(text, strlen(text));
-    const std::array<unsigned char, 64>& value = hash.value();
+    const std::array<unsigned char, 32>& value = hash.value();
 
     std::array<unsigned char, 64> referenceValue =
     {
@@ -134,29 +124,25 @@ void SHA512HashTests::ValueTest3(Test& test)
     ISHIKO_TEST_PASS();
 }
 
-void SHA512HashTests::ValueTest4(Test& test)
+void SHA256HashTests::ValueTest4(Test& test)
 {
-    SHA512Hash hash;
+    SHA256Hash hash;
     std::string text(1000000, 'a');
     hash.update(text.c_str(), text.size());
-    const std::array<unsigned char, 64>& value = hash.value();
+    const std::array<unsigned char, 32>& value = hash.value();
 
-    std::array<unsigned char, 64> referenceValue =
+    std::array<unsigned char, 32> referenceValue =
     {
-        0xe7, 0x18, 0x48, 0x3d, 0x0c, 0xe7, 0x69, 0x64,
-        0x4e, 0x2e, 0x42, 0xc7, 0xbc, 0x15, 0xb4, 0x63,
-        0x8e, 0x1f, 0x98, 0xb1, 0x3b, 0x20, 0x44, 0x28,
-        0x56, 0x32, 0xa8, 0x03, 0xaf, 0xa9, 0x73, 0xeb,
-        0xde, 0x0f, 0xf2, 0x44, 0x87, 0x7e, 0xa6, 0x0a,
-        0x4c, 0xb0, 0x43, 0x2c, 0xe5, 0x77, 0xc3, 0x1b,
-        0xeb, 0x00, 0x9c, 0x5c, 0x2c, 0x49, 0xaa, 0x2e,
-        0x4e, 0xad, 0xb2, 0x17, 0xad, 0x8c, 0xc0, 0x9b
+        0xcd, 0xc7, 0x6e, 0x5c, 0x99, 0x14, 0xfb, 0x92,
+        0x81, 0xa1, 0xc7, 0xe2, 0x84, 0xd7, 0x3e, 0x67,
+        0xf1, 0x80, 0x9a, 0x48, 0xa4, 0x97, 0x20, 0x0e,
+        0x04, 0x6d, 0x39, 0xcc, 0xc7, 0x11, 0x2c, 0xd0
     };
 
     // We don't use the operator == to make it easier to
     // debug
     bool equal = true;
-    for (size_t i = 0; i < 64; ++i)
+    for (size_t i = 0; i < 32; ++i)
     {
         if (value[i] != referenceValue[i])
         {
@@ -169,15 +155,15 @@ void SHA512HashTests::ValueTest4(Test& test)
     ISHIKO_TEST_PASS();
 }
 
-void SHA512HashTests::ValueTest5(Test& test)
+void SHA256HashTests::ValueTest5(Test& test)
 {
-    SHA512Hash hash;
+    SHA256Hash hash;
     std::string text("abcdefghbcdefghicdefghijdefghijkefghijklfghijklmghijklmnhijklmno");
     for (size_t i = 0; i < 16777216; ++i)
     {
         hash.update(text.c_str(), text.size());
     }
-    const std::array<unsigned char, 64>& value = hash.value();
+    const std::array<unsigned char, 32>& value = hash.value();
 
     std::array<unsigned char, 64> referenceValue =
     {
@@ -207,28 +193,24 @@ void SHA512HashTests::ValueTest5(Test& test)
     ISHIKO_TEST_PASS();
 }
 
-void SHA512HashTests::UpdateFromFileTest1(Test& test)
+void SHA256HashTests::UpdateFromFileTest1(Test& test)
 {
-    SHA512Hash hash;
+    SHA256Hash hash;
     hash.updateFromFile(test.context().getDataPath("EmptyFile.txt").string());
-    const std::array<unsigned char, 64>& value = hash.value();
+    const std::array<unsigned char, 32>& value = hash.value();
 
-    std::array<unsigned char, 64> referenceValue =
+    std::array<unsigned char, 32> referenceValue =
     {
-        0xcf, 0x83, 0xe1, 0x35, 0x7e, 0xef, 0xb8, 0xbd,
-        0xf1, 0x54, 0x28, 0x50, 0xd6, 0x6d, 0x80, 0x07,
-        0xd6, 0x20, 0xe4, 0x05, 0x0b, 0x57, 0x15, 0xdc,
-        0x83, 0xf4, 0xa9, 0x21, 0xd3, 0x6c, 0xe9, 0xce,
-        0x47, 0xd0, 0xd1, 0x3c, 0x5d, 0x85, 0xf2, 0xb0,
-        0xff, 0x83, 0x18, 0xd2, 0x87, 0x7e, 0xec, 0x2f,
-        0x63, 0xb9, 0x31, 0xbd, 0x47, 0x41, 0x7a, 0x81,
-        0xa5, 0x38, 0x32, 0x7a, 0xf9, 0x27, 0xda, 0x3e
+        0xe3, 0xb0, 0xc4, 0x42, 0x98, 0xfc, 0x1c, 0x14,
+        0x9a, 0xfb, 0xf4, 0xc8, 0x99, 0x6f, 0xb9, 0x24,
+        0x27, 0xae, 0x41, 0xe4, 0x64, 0x9b, 0x93, 0x4c,
+        0xa4, 0x95, 0x99, 0x1b, 0x78, 0x52, 0xb8, 0x55
     };
 
     // We don't use the operator == to make it easier to
     // debug
     bool equal = true;
-    for (size_t i = 0; i < 64; ++i)
+    for (size_t i = 0; i < 32; ++i)
     {
         if (value[i] != referenceValue[i])
         {
@@ -241,28 +223,24 @@ void SHA512HashTests::UpdateFromFileTest1(Test& test)
     ISHIKO_TEST_PASS();
 }
 
-void SHA512HashTests::UpdateFromFileTest2(Test& test)
+void SHA256HashTests::UpdateFromFileTest2(Test& test)
 {
-    SHA512Hash hash;
+    SHA256Hash hash;
     hash.updateFromFile(test.context().getDataPath("abc.txt").string());
-    const std::array<unsigned char, 64>& value = hash.value();
+    const std::array<unsigned char, 32>& value = hash.value();
 
-    std::array<unsigned char, 64> referenceValue =
+    std::array<unsigned char, 32> referenceValue =
     {
-        0xDD, 0xAF, 0x35, 0xA1, 0x93, 0x61, 0x7A, 0xBA,
-        0xCC, 0x41, 0x73, 0x49, 0xAE, 0x20, 0x41, 0x31,
-        0x12, 0xE6, 0xFA, 0x4E, 0x89, 0xA9, 0x7E, 0xA2,
-        0x0A, 0x9E, 0xEE, 0xE6, 0x4B, 0x55, 0xD3, 0x9A,
-        0x21, 0x92, 0x99, 0x2A, 0x27, 0x4F, 0xC1, 0xA8,
-        0x36, 0xBA, 0x3C, 0x23, 0xA3, 0xFE, 0xEB, 0xBD,
-        0x45, 0x4D, 0x44, 0x23, 0x64, 0x3C, 0xE8, 0x0E,
-        0x2A, 0x9A, 0xC9, 0x4F, 0xA5, 0x4C, 0xA4, 0x9F
+        0xba, 0x78, 0x16, 0xbf, 0x8f, 0x01, 0xcf, 0xea,
+        0x41, 0x41, 0x40, 0xde, 0x5d, 0xae, 0x22, 0x23,
+        0xb0, 0x03, 0x61, 0xa3, 0x96, 0x17, 0x7a, 0x9c,
+        0xb4, 0x10, 0xff, 0x61, 0xf2, 0x00, 0x15, 0xad
     };
 
     // We don't use the operator == to make it easier to
     // debug
     bool equal = true;
-    for (size_t i = 0; i < 64; ++i)
+    for (size_t i = 0; i < 32; ++i)
     {
         if (value[i] != referenceValue[i])
         {
@@ -275,11 +253,11 @@ void SHA512HashTests::UpdateFromFileTest2(Test& test)
     ISHIKO_TEST_PASS();
 }
 
-void SHA512HashTests::UpdateFromFileTest3(Test& test)
+void SHA256HashTests::UpdateFromFileTest3(Test& test)
 {
-    SHA512Hash hash;
+    SHA256Hash hash;
     hash.updateFromFile(test.context().getDataPath("smallfile.txt").string());
-    const std::array<unsigned char, 64>& value = hash.value();
+    const std::array<unsigned char, 32>& value = hash.value();
 
     std::array<unsigned char, 64> referenceValue =
     {
@@ -309,7 +287,7 @@ void SHA512HashTests::UpdateFromFileTest3(Test& test)
     ISHIKO_TEST_PASS();
 }
 
-void SHA512HashTests::UpdateFromFileTest4(Test& test)
+void SHA256HashTests::UpdateFromFileTest4(Test& test)
 {
     // Generate a file with a million 'a' characters in it
     // We generate the file because we do not want to store such a large file in version control
@@ -322,26 +300,22 @@ void SHA512HashTests::UpdateFromFileTest4(Test& test)
     }
     testFile.close();
 
-    SHA512Hash hash;
+    SHA256Hash hash;
     hash.updateFromFile(testFilePath);
-    const std::array<unsigned char, 64>& value = hash.value();
+    const std::array<unsigned char, 32>& value = hash.value();
 
-    std::array<unsigned char, 64> referenceValue =
+    std::array<unsigned char, 32> referenceValue =
     {
-        0xe7, 0x18, 0x48, 0x3d, 0x0c, 0xe7, 0x69, 0x64,
-        0x4e, 0x2e, 0x42, 0xc7, 0xbc, 0x15, 0xb4, 0x63,
-        0x8e, 0x1f, 0x98, 0xb1, 0x3b, 0x20, 0x44, 0x28,
-        0x56, 0x32, 0xa8, 0x03, 0xaf, 0xa9, 0x73, 0xeb,
-        0xde, 0x0f, 0xf2, 0x44, 0x87, 0x7e, 0xa6, 0x0a,
-        0x4c, 0xb0, 0x43, 0x2c, 0xe5, 0x77, 0xc3, 0x1b,
-        0xeb, 0x00, 0x9c, 0x5c, 0x2c, 0x49, 0xaa, 0x2e,
-        0x4e, 0xad, 0xb2, 0x17, 0xad, 0x8c, 0xc0, 0x9b
+        0xcd, 0xc7, 0x6e, 0x5c, 0x99, 0x14, 0xfb, 0x92,
+        0x81, 0xa1, 0xc7, 0xe2, 0x84, 0xd7, 0x3e, 0x67,
+        0xf1, 0x80, 0x9a, 0x48, 0xa4, 0x97, 0x20, 0x0e,
+        0x04, 0x6d, 0x39, 0xcc, 0xc7, 0x11, 0x2c, 0xd0
     };
 
     // We don't use the operator == to make it easier to
     // debug
     bool equal = true;
-    for (size_t i = 0; i < 64; ++i)
+    for (size_t i = 0; i < 32; ++i)
     {
         if (value[i] != referenceValue[i])
         {
@@ -351,12 +325,12 @@ void SHA512HashTests::UpdateFromFileTest4(Test& test)
     }
 
     boost::filesystem::remove(testFilePath);
-    
+
     ISHIKO_TEST_FAIL_IF_NOT(equal);
     ISHIKO_TEST_PASS();
 }
 
-void SHA512HashTests::UpdateFromFileTest5(Test& test)
+void SHA256HashTests::UpdateFromFileTest5(Test& test)
 {
     // Generate a file with a million 'a' characters in it
     // We generate the file because we do not want to store such a large file in version control
@@ -370,9 +344,9 @@ void SHA512HashTests::UpdateFromFileTest5(Test& test)
     }
     testFile.close();
 
-    SHA512Hash hash;
+    SHA256Hash hash;
     hash.updateFromFile(testFilePath);
-    const std::array<unsigned char, 64>& value = hash.value();
+    const std::array<unsigned char, 32>& value = hash.value();
 
     std::array<unsigned char, 64> referenceValue =
     {
@@ -399,7 +373,7 @@ void SHA512HashTests::UpdateFromFileTest5(Test& test)
     }
 
     boost::filesystem::remove(testFilePath);
-    
+
     ISHIKO_TEST_FAIL_IF_NOT(equal);
     ISHIKO_TEST_PASS();
 }

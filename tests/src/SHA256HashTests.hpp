@@ -13,6 +13,11 @@ public:
 
 private:
     static void CreationTest1(Ishiko::Test& test);
+    static void ValueTest1(Ishiko::Test& test);
+    static void ValueTest2(Ishiko::Test& test);
+    static void ValueTest3(Ishiko::Test& test);
+    static void ValueTest4(Ishiko::Test& test);
+    static void ValueTest5(Ishiko::Test& test);
 };
 
 #endif

@@ -4,6 +4,7 @@
 #ifndef GUARD_ISHIKO_CPP_CRYPTO_SHA512HASH_HPP
 #define GUARD_ISHIKO_CPP_CRYPTO_SHA512HASH_HPP
 
+#include <Ishiko/Memory.hpp>
 #include <botan/sha2_64.h>
 #include <array>
 
@@ -36,11 +37,11 @@ namespace Ishiko
             @see update
             @see updateFromFile
         */
-        const std::array<unsigned char, 64>& value() const;
+        const StackByteBuffer<64>& value() const;
 
     private:
         mutable Botan::SHA_512 m_context;
-        mutable std::array<unsigned char, 64> m_value;
+        mutable StackByteBuffer<64> m_value;
     };
 }
 

@@ -37,7 +37,11 @@ endif
 # Additionally, this makefile is customizable with the following
 # settings:
 #
-#      ISHIKO_CPP_BOTAN_ROOT  Path to the Botan installation
+#      ISHIKO_CPP_BASEPLATFORM_ROOT  Path to the Ishiko/C++ BasePlatform installation
+#      ISHIKO_CPP_ERRORS_ROOT        Path to the Ishiko/C++ Errors installation
+#      ISHIKO_CPP_FMT_ROOT           Path to the fmt installation
+#      ISHIKO_CPP_MEMORY_ROOT        Path to the Ishiko/C++ Memory installation
+#      ISHIKO_CPP_BOTAN_ROOT         Path to the Botan installation
 
 # Use "make RANLIB=''" for platforms without ranlib.
 RANLIB ?= ranlib
@@ -64,6 +68,14 @@ endif
 # Configurable settings:
 # 
 
+# Path to the Ishiko/C++ BasePlatform installation
+ISHIKO_CPP_BASEPLATFORM_ROOT ?= $(ISHIKO_CPP_ROOT)/base-platform
+# Path to the Ishiko/C++ Errors installation
+ISHIKO_CPP_ERRORS_ROOT ?= $(ISHIKO_CPP_ROOT)/errors
+# Path to the fmt installation
+ISHIKO_CPP_FMT_ROOT ?= $(FMT_ROOT)
+# Path to the Ishiko/C++ Memory installation
+ISHIKO_CPP_MEMORY_ROOT ?= $(ISHIKO_CPP_ROOT)/memory
 # Path to the Botan installation
 ISHIKO_CPP_BOTAN_ROOT ?= $(BOTAN_ROOT)
 
@@ -76,10 +88,10 @@ all: ../bakefile/../../lib/lib$(if $(call _equal,$(config),Debug),IshikoCrypto-d
 	$(RANLIB) $@
 
 $(_builddir)IshikoCrypto_SHA256Hash.o: ../../src/SHA256Hash.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_BOTAN_ROOT)/include/botan-2 -I../../include/Ishiko/Crypto -std=c++11 ../../src/SHA256Hash.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_FMT_ROOT)/include -I$(ISHIKO_CPP_MEMORY_ROOT)/include -I$(ISHIKO_CPP_BOTAN_ROOT)/include/botan-2 -I../../include/Ishiko/Crypto -std=c++11 ../../src/SHA256Hash.cpp
 
 $(_builddir)IshikoCrypto_SHA512Hash.o: ../../src/SHA512Hash.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_BOTAN_ROOT)/include/botan-2 -I../../include/Ishiko/Crypto -std=c++11 ../../src/SHA512Hash.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_FMT_ROOT)/include -I$(ISHIKO_CPP_MEMORY_ROOT)/include -I$(ISHIKO_CPP_BOTAN_ROOT)/include/botan-2 -I../../include/Ishiko/Crypto -std=c++11 ../../src/SHA512Hash.cpp
 
 clean:
 	rm -f $(_builddir)*.o

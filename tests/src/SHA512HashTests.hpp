@@ -1,11 +1,8 @@
-/*
-    Copyright (c) 2017-2022 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/ishiko-cpp/crypto/blob/main/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2000-2024 Xavier Leclercq
+// SPDX-License-Identifier: MIT
 
-#ifndef _ISHIKO_CPP_CRYPTO_TESTS_SHA512HASHTESTS_HPP_
-#define _ISHIKO_CPP_CRYPTO_TESTS_SHA512HASHTESTS_HPP_
+#ifndef GUARD_ISHIKO_CPP_CRYPTO_TESTS_SHA512HASHTESTS_HPP
+#define GUARD_ISHIKO_CPP_CRYPTO_TESTS_SHA512HASHTESTS_HPP
 
 #include <Ishiko/TestFramework/Core.hpp>
 
